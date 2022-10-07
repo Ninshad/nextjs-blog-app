@@ -2,13 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import {PostCard, PostWidget, Categories} from '../components';
+import {getPosts} from '../services'
 
-const posts = [
-  {title: 'React Testing', excerpt:'Learning React testing' },
-  {title: 'React with tailwind', excerpt:'Learning React with tailwind' }
-]
 
-const Home: NextPage = () => {
+const Home: NextPage = ({posts}) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -33,3 +30,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+  return {
+    props : {posts}
+  }
+
+}
