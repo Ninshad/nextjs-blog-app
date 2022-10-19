@@ -5,8 +5,11 @@ import {PostCard, PostWidget, Categories, FeaturedPostCard} from '../components'
 import {getPosts} from '../services'
 import { FeaturedPosts } from '../sections'
 
+interface Props {
+  posts: Array<string>
+}
 
-const Home: NextPage = ({posts}) => {
+const Home: NextPage<Props> = ({posts}) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
