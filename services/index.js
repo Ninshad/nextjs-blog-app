@@ -135,7 +135,6 @@ export const getFeaturedPosts = async () => {
   return result.posts;
 };
 
-
 export const getCategories = async() =>{
   const query = gql`
     query GetCategories{
